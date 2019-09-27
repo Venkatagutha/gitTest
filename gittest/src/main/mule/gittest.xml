@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="8e24503a-5970-4ee8-8704-fc0ccfd57788" >
+		<http:listener-connection host="0.0.0.0" port="8082" />
+	</http:listener-config>
+	<flow name="gittestFlow" doc:id="8a416e81-1127-4ef4-9151-44f559a1995e" >
+		<http:listener doc:name="Listener" doc:id="64dd324b-b1b9-4bb5-a457-03b1d23e7a4b" config-ref="HTTP_Listener_config" path="/check"/>
+		<logger level="INFO" doc:name="Logger" doc:id="50739e90-55d0-447f-8b8f-db117b6e5e0b" message="#['Received Message: \n']#[payload]"/>
+	</flow>
+</mule>
